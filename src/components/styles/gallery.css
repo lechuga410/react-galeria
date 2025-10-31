@@ -1,0 +1,43 @@
+.gallery .grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:12px;
+}
+
+.thumb{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.03);
+  padding:0;
+  border-radius:10px;
+  overflow:hidden;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.thumb:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(2,6,23,0.6)}
+.thumb img{width:100%;height:150px;object-fit:cover;display:block;transition:transform .14s ease}
+.thumb:active img{transform:scale(.96)}
+.thumb .caption{padding:0.5rem;font-size:0.95rem;text-align:left;color:var(--muted)}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:60}
+.lightbox .backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.7)}
+.lightbox-content{position:relative;z-index:70;max-width:90vw;max-height:90vh;overflow:auto;background:var(--card);padding:1rem;border-radius:10px;box-shadow:0 8px 40px rgba(2,6,23,0.7);display:flex;gap:12px;align-items:center}
+/* limitar el ancho de la imagen para que no ocupe tanto espacio al abrir */
+.lightbox-content img{max-width:50vw;max-height:78vh;height:auto;border-radius:6px;display:block;transition:transform 220ms ease}
+.lightbox-image{cursor:zoom-in}
+.lightbox-image.zoomed{transform:scale(1.08);cursor:zoom-out}
+.lightbox-content h3{margin:0.5rem 0 0;color:var(--text)}
+.close{position:absolute;right:8px;top:8px;background:transparent;border:0;color:var(--text);font-size:1.5rem;cursor:pointer}
+
+.lightbox-controls{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:8px}
+.lightbox-controls button{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text);padding:6px 10px;border-radius:6px;cursor:pointer}
+
+@media (max-width:520px){
+  .thumb img{height:120px}
+  .app-header h1{font-size:1.25rem}
+  .lightbox-content{flex-direction:column-reverse;padding:8px}
+  .lightbox-content img{max-width:90vw;max-height:56vh}
+}

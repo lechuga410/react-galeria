@@ -1,0 +1,66 @@
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --accent:#06b6d4;
+  --muted:#94a3b8;
+  --text:#e6eef6;
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background:linear-gradient(180deg,#071021 0%, #0b1220 100%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+}
+
+.app{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+.app-header{
+  padding:2rem 1rem 0.5rem;
+  text-align:center;
+}
+.app-header h1{margin:0;font-size:1.75rem}
+.app-header p{color:var(--muted);margin:0.25rem 0 1.25rem}
+
+main{flex:1;padding:1rem;max-width:1100px;margin:0 auto;width:100%}
+.app-footer{padding:1rem;text-align:center;color:var(--muted)}
+
+.gallery .grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:12px;
+}
+
+.thumb{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.03);
+  padding:0;
+  border-radius:10px;
+  overflow:hidden;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.thumb img{width:100%;height:150px;object-fit:cover;display:block}
+.thumb .caption{padding:0.5rem;font-size:0.95rem;text-align:left;color:var(--muted)}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:60}
+.lightbox .backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.7)}
+.lightbox-content{position:relative;z-index:70;max-width:90vw;max-height:90vh;overflow:auto;background:var(--card);padding:1rem;border-radius:10px;box-shadow:0 8px 40px rgba(2,6,23,0.7);}
+.lightbox-content img{max-width:100%;height:auto;border-radius:6px;display:block}
+.lightbox-content h3{margin:0.5rem 0 0;color:var(--text)}
+.close{position:absolute;right:8px;top:8px;background:transparent;border:0;color:var(--text);font-size:1.5rem;cursor:pointer}
+
+@media (max-width:520px){
+  .thumb img{height:120px}
+  .app-header h1{font-size:1.25rem}
+}
